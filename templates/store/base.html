@@ -1,0 +1,150 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}ClothingStore{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href=" {% static 'base.css' %}">
+    <link rel="stylesheet" href=" {% static 'home.css' %}">
+    <link rel="stylesheet" href=" {% static 'category.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar" id="navbar">
+            <h1 class="brand_name">Modern Classics</h1>
+            <div class="nav-bar left">
+               
+                <ul class="nav-sections" id="nav-sections-left">
+                    <li class="nav-item">
+                        <a href="/">HOME</a>
+                    </li>
+                    {% comment %} <li class="nav-item">
+                        <a href="#">SHOP</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a href="#">NEW ARRIVALS</a> 
+                    </li>                 
+                    <li class="nav-item dropdown">
+                            
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                CATEGORY
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                
+                                <li><a class="dropdown-item" href="{% url "store:product_all" %}">All</a></li>
+                                
+                                {% for c in categories %}
+                                
+                                <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+                                    <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                                </li>
+                                
+                                {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">WISHLIST</a>
+                    </li>
+                    <li class="nav-item">
+                       
+                    </li>
+                </ul>
+            </div>
+           
+            <div class="nav-bar right">
+                <ul class="nav-sections" id="nav-sections-right">
+                    <li class="nav-item">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                             Log-in
+                            </button>
+                            <form class="dropdown-menu p-4">
+                              <div class="mb-3">
+                                <label for="exampleDropdownFormEmail2" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <a type="button" role="button" href="{% url "basket:basket_summary" %}" class="btn btn-outline-secondary">
+                 
+                    {% with total_qty=basket|length %}
+                    <div id="basket-qty" class="d-inline-flex">
+                        {% if total_qty > 0 %}
+                            {{total_qty}} 
+                        {%else%}
+                            0
+                        {% endif %}
+                    </div>
+                    {% endwith%}
+                  
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                        <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                      Basket
+                </a>
+            </div>   
+        </nav>
+                  
+    </header>
+    <div id="content">{% block content %} {% endblock %}</div>
+    <footer>
+        <div class="footer">
+                <div class="our-story" id="our-story">
+                        <h6>Our Story</h6>
+                        <p>Our origin story is more of an origin statement. We wanted to design what we wanted to wear – so we did. 
+
+                            
+                            We’re for good times and even greater design. And we create what you want to wear because we wear it too. <br><br>
+                            
+                            We are <span id="brand_name">Modern Classics</span>.
+                        </p>
+                        <div class="copywright">
+                            <p><small>&copy;<span id="brand_name">Modern Classics</span> by Jayesh Khairnar</small></p>
+                        </div>
+                </div>
+                <ul class="footer-sections">
+                    <li class="nav-item">
+                        <a href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Subscribe</a>
+                    </li>
+                </ul>
+                
+        </div>
+      
+  <div id="popUp">
+    <div id="close" class="close"><i class="fa fa-times"></i></div>
+    <div id="new"><span>OFFER!</span></div>
+    <h2>We are giving away a 10% discount for all customers who wish to subscribe to our email service. So what are you waiting for, just click the button below to avail the discount</h2>
+    <br>
+    <a href=""  class="button">Subscribe</a>
+  </div>
+  <button class="sale-offer-notification" id="plus">TAKE 10%</button>
+    </footer>
+    <script src="{% static 'base.js'%}"></script>
+</body>
+</html>

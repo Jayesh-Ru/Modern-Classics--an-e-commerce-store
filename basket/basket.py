@@ -23,11 +23,11 @@ class Basket():
         product_id = str(product.id)
 
         if product_id in self.basket:
-            self.basket[product_id]['qty'] = qty
-        else:
-            self.basket[product_id] = {'price': str(product.price), 'qty': qty}
+            self.basket[product_id]['qty'] = qty               #it's stored as a dictionary i.e. { product_id:{ 'qty'  : 'qty',
+        else:                                                                            #                     'price' : str(product.price)
+            self.basket[product_id] = {'price': str(product.price), 'qty': qty}          #                     }}
 
-        self.save()                                                  # self.session.modified = True
+        self.save()                 # self.session.modified = True
 
     def __iter__(self):
         """

@@ -52,7 +52,7 @@
     justify-content: space-evenly;
     align-items: baseline;
     font-size: small;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
 }
 .our-story{
     padding-left: 50px;
@@ -64,6 +64,9 @@
 }
 .footer-sections li{
     padding-left: 15px;
+}
+.copywright{
+  margin-left: 470px;
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */

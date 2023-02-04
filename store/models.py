@@ -10,6 +10,11 @@ class ProductManager(models.Manager):
     def get_queryset(self):
         return super(ProductManager, self).get_queryset().filter(is_active=True)
 
+class WishlistManager(models.Manager):
+    def get_queryset(self):
+        return super(WishlistManager, self).get_queryset().filter(is_wishlisted=True)
+
+
 
 class Category(models.Model):
     name = models.CharField(max_length=225,db_index=True)               #db_index-->??
@@ -34,6 +39,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
+    is_wishlisted = models.BooleanField(default=False)
     description = models.CharField(
         max_length=1000, default='', blank=True, null=True)
     image = models.ImageField(upload_to='uploads/products/',default='uploads/products/default.jpg')
@@ -42,6 +48,7 @@ class Product(models.Model):
     updated = models.DateTimeField(auto_now=True)
     objects = models.Manager()
     products = ProductManager()
+    wishlisted = WishlistManager()
 
     class Meta:
         verbose_name_plural = 'Products'

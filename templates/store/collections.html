@@ -1,0 +1,84 @@
+{% extends './base.html' %}
+{% load static %}
+{%block content%}
+
+<main>
+    <div class="album py-5 bg-transparent">
+      <div class="container bg-transparent">
+  
+        <div class="pb-3 h5 bg-transparent ">wishlist</div>
+        <div class="products-container bg-transparent">
+  
+        {% for product in products %}
+  
+          <div class="col bg-transparent">
+            <div class="card shadow-sm bg-transparent">
+          
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img class="card-img-top first-img" alt="Responsive image" src="{{ product.image.url }}">
+                  </div>
+                  <div class="flip-card-back">
+                    <img class="card-img-top second-img" alt="Responsive image" src="{{ product.image2.url }}">
+                  </div>
+                </div>
+              </div>
+            
+              <div class="card-body">
+                <p class="card-text">
+                  <a class="text-dark text-decoration-none bolder-text" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                  <svg id="svg{{forloop.counter}}" class="bi bi-bookmark-fill" data-index="{{product.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  viewBox="0 0 16 16"> <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" ></path> </svg>
+                  
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">{{ product.brand }}</small>
+                  <small class="text-muted"><strong>&pound;{{ product.price }}</strong></small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>   
+            {% if product.is_wishlisted %}
+              $("#svg{{forloop.counter}}").css("color","red");
+              console.log('half-sucess');
+            {% endif %}
+          </script> 
+        {% endfor %}
+  
+        </div>
+      </div>
+    </div>
+  
+  
+  </main>
+  <script>
+    $(document).on('click', '.bi', function (e) {
+      e.preventDefault();
+      console.log('success-step1');
+      var prodid = $(this).data('index');
+      $.ajax({
+        type: 'POST',
+        url: '{% url "saved:saved" %}',
+        data: {
+          productid: $(this).data('index'),
+          
+          csrfmiddlewaretoken: "{{csrf_token}}",
+          action: 'post'
+        },
+        success: function (json) {
+          console.log(json.status);
+          if(json.status){
+            $('[data-index="'+prodid+'"]').css("color","red");
+          }
+          else{
+            location.reload();
+          }
+          
+          console.log('success-step2');
+        },
+        error: function (xhr, errmsg, err) {}
+      });
+    })
+  </script>
+{% endblock %}

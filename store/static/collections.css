@@ -1,0 +1,10 @@
+.bi.bi-bookmark-fill{
+    cursor: pointer;
+    color:white;
+    stroke: #020000;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+}
+.bi.bi-bookmark-fill.liked{
+    color:red ;
+}

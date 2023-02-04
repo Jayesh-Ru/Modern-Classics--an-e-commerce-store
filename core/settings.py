@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',  #new app
     'basket', #new app
+    'saved',
 
 ]
 

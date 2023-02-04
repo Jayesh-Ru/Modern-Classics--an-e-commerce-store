@@ -63,7 +63,13 @@ class Basket():
             self.basket[product_id]['qty'] = qty
         self.save()
 
-    
+    # def wishlist(self, product):
+    #     product_id = str(product.id)
+        
+    #     if product_id in self.basket:
+    #         self.basket[product_id]['wishlisted'] = product.is_wishlisted   
+    #     else:
+    #         self.basket[product_id] = {}
 
     def delete(self, product):
         """

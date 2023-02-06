@@ -104,7 +104,7 @@
                       Basket
                 </a> {% endcomment %}
                 {% if user.is_authenticated %}
-                    <a type="button" role="button" href="#"             {% comment "" %}{% url "account:logout" %}{% endcomment %}
+                    <a type="button" role="button" href="{% url "account:logout" %}"             {% comment "" %}{% endcomment %}
                         class="btn  border-0 basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -117,7 +117,7 @@
                         <span class="fs15 fw500">Logout</span>
                     </a>
                     {% else %}
-                    <a type="button" role="button" href="#"                 {% comment "" %}{% url "account:logout" %}{% endcomment %}
+                    <a type="button" role="button" href="{% url "account:logout" %}"                 {% comment "" %}{% endcomment %}
                         class="btn  border-0 basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -132,7 +132,7 @@
                     {% endif %}
 
 
-                    <a type="button" role="button" href="#"         {% comment "" %}{% url "account:dashboard" %}{% endcomment %}
+                    <a type="button" role="button" href="{% url "account:dashboard" %}"         {% comment "" %}{% endcomment %}
                         class="btn  border-0 basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -144,7 +144,7 @@
                         <span class="fs15 fw500">Account</span>
                     </a>
 
-                    <a type="button" role="button" href="{% url "basket:basket_summary" %}"             {% comment "" %}{% endcomment %}
+                    <a type="button" role="button" href="{% url "basket:basket_summary" %}"             
                         class="btn  border-0 basket-btn">
 
                         {% with total_qty=basket|length %}

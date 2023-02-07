@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent 
 
 
 # Quick-start development settings - unsuitable for production
@@ -142,13 +142,19 @@ BASKET_SESSION_ID = 'basket'
 
 # Stripe Payment
 #
-STRIPE_ENDPOINT_SECRET = 'whsec_f71b9414ccf0509fcdd3a873b70ee32432976d110cb7e7eb81ae7d9d072f52512f5251'
+STRIPE_ENDPOINT_SECRET = 'whsec_f71b9414ccf0509fcdd3a873b70ee32432976d110cb7e7eb81ae7d9d072f5251'
 # stripe listen --forward-to localhost:8000/payment/webhook/
 
+
+# AUTHENTICATION_BACKENDS = (
+#     ('django.contrib.auth.backends.ModelBackend'),
+# )
 # Custom user model
+
 AUTH_USER_MODEL = 'account.UserBase'
 LOGIN_REDIRECT_URL = '/account/dashboard'
 LOGIN_URL = '/account/login/'
+
 
 # Email setting
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -1,13 +1,24 @@
 {% extends "../../base.html" %} {% load static %} {% block title %}Basket Summary{%endblock %} {% block content %}
 
-<main class="pt-5">
+<main class="pt-5 bg-transparent">
   <div class="container" style="max-width: 1000px">
-    <div class="col-12">
-      <h1 class="h2">Your Dashboard</h1>
+    <div class="col-12 d-flex justify-content-center">
+      <h1 class="heading-font-style">My Account</h1>
     </div>
-    <div class="col-12 d-flex justify-content-between">
-      <div>Manage your <b>orders</b> and personal details</div>
-      <div><a href="{% url "account:edit_details" %}">Change Details</a></div>
+    <div class="col-12 d-flex justify-content-center">
+      {% comment %} <div>Manage your <b>orders</b> and personal details</div> {% endcomment %}
+      <div></div>
+    </div>
+    
+    
+    <div id="account-details">
+      <h5>{{user.full_name}}</h5>
+      <small>{{user.email}}</small>
+      <small>{{user.phone_number}}</small>
+      <small>{{user.town_city}}</small>
+      <small>{{user.country}}</small>
+      <small>{{user.postcode}}</small>
+      <small><a href="{% url "account:edit_details" %}">Change Details</a></small>
     </div>
     <hr />
   </div>
@@ -16,7 +27,7 @@
     <script>console.log('success');</script>
     <div class="row g-3">
       
-      <div class="col-12 bg-light p-3 d-flex justify-content-between">
+      <div class="col-12  p-3 d-flex justify-content-between">
         <div class="d-flex d-flex-inline">
 
           <div class="pe-3">{{ order.created }}</div>

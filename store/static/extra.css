@@ -1,0 +1,47 @@
+#account-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+/* #user-name {
+  justify-self: center;
+} */
+
+.heading-font-style {
+  font-family: "Outfit", sans-serif;
+  font-weight: 800;
+  /* text-decoration-line: underline; */
+}
+
+/* about-page-styling */
+.about-div {
+  width: 60%;
+  margin-left: 20%;
+  word-spacing: 2px;
+  text-align: justify;
+  padding: 20px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 1000;
+}
+
+#sml-img-div {
+  width: 100%;
+}
+#big-img-div {
+  background-image: url("images/ZANEROBE-About-NR-Header_1512x.jpg");
+  color: rgb(255, 255, 255);
+  height: 100%;
+}
+#big-img-div h2 {
+  background-color: transparent;
+  position: relative;
+  top: 58%;
+  left: 10%;
+  color: black;
+}
+
+.brand_name.about {
+  background-color: transparent;
+  font-size: 50px;
+}

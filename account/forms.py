@@ -3,6 +3,8 @@ from django.contrib.auth.forms import (AuthenticationForm, PasswordResetForm,
                                        SetPasswordForm)
 
 from .models import UserBase
+from orders.models import Order
+from django_countries.fields import CountryField
 
 
 class UserLoginForm(AuthenticationForm):
@@ -111,3 +113,35 @@ class UserEditForm(forms.ModelForm):
         self.fields['email'].required = True
 
 
+class OrderDetailsForm(forms.ModelForm):
+
+    full_name = forms.CharField(
+        label='Customer Name', min_length=4, max_length=50, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'custName','required':'True'}))
+
+    address_1 = forms.CharField(
+        label='Address', min_length=4, max_length=100, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Firstname', 'id': 'custAdd','required':'True'}))
+    
+    
+    address_2 = forms.CharField(
+        label='Address 2 (Optional)', min_length=4, max_length=100, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Firstname', 'id': 'custAdd2'}))
+    
+    postcode = forms.CharField(
+        label='Postcode', min_length=6, max_length=6, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'id': 'postCode'}))
+
+    country = CountryField().formfield()
+    
+    class Meta:
+        model = Order
+        fields = ('full_name', 'address_1','address_2','postcode','country')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['full_name'].required = True
+        self.fields['address_1'].required = True
+        self.fields['address_2'].required = False
+        self.fields['country'].required = True
+        self.fields['postcode'].required = True

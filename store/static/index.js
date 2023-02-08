@@ -33,13 +33,17 @@ card.on("change", function (event) {
 
 var form = document.getElementById("payment-form");
 
+
 form.addEventListener("submit", function (ev) {
   ev.preventDefault();
-
+  
   var custName = document.getElementById("custName").value;
   var custAdd = document.getElementById("custAdd").value;
   var custAdd2 = document.getElementById("custAdd2").value;
   var pincode = document.getElementById("postCode").value;
+  var custCity = document.getElementById("state").value;
+  var custCountry = document.getElementById("id_country").value;
+  // var custPhone = document.getElementById("postCode").value;
 
   $.ajax({
     type: "POST",
@@ -51,7 +55,7 @@ form.addEventListener("submit", function (ev) {
     },
     success: function (json) {
       console.log(json.success);
-
+      form.save();
       stripe
         .confirmCardPayment(clientsecret, {
           payment_method: {
@@ -62,7 +66,6 @@ form.addEventListener("submit", function (ev) {
                 line2: custAdd2,
               },
               name: custName,
-              postCode: pincode,
             },
           },
         })
@@ -84,6 +87,8 @@ form.addEventListener("submit", function (ev) {
           }
         });
     },
-    error: function (xhr, errmsg, err) {},
+    error: function (xhr, errmsg, err) {
+      console.log('error occured')
+    },
   });
 });

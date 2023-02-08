@@ -3,11 +3,17 @@ import json
 import stripe
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib.sites.shortcuts import get_current_site
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
+from account.forms import OrderDetailsForm
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from basket.basket import Basket
+from account.token import account_activation_token
 from orders.views import payment_confirmation
 
 
@@ -26,7 +32,7 @@ class Error(TemplateView):
 
 @login_required
 def BasketView(request):
-
+    orders = OrderDetailsForm(request.POST)
     basket = Basket(request)
     total = str(basket.get_total_price())
     total = total.replace('.', '')
@@ -39,7 +45,7 @@ def BasketView(request):
         metadata={'userid': request.user.id}
     )
 
-    return render(request, 'payment/home.html', {'client_secret': intent.client_secret})
+    return render(request, 'payment/home.html', {'client_secret': intent.client_secret,'form':orders})
 
 
 @csrf_exempt
@@ -63,3 +69,6 @@ def stripe_webhook(request):
         print('Unhandled event type {}'.format(event.type))
 
     return HttpResponse(status=200)
+
+
+

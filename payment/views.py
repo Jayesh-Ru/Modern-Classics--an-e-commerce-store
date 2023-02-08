@@ -20,6 +20,9 @@ def order_placed(request):
 class Error(TemplateView):
     template_name = 'payment/error.html'
 
+# @login_required
+# def OrderForm(request):
+
 
 @login_required
 def BasketView(request):

@@ -11,6 +11,7 @@
 .heading-font-style {
   font-family: "Outfit", sans-serif;
   font-weight: 800;
+  background-color: transparent;
   /* text-decoration-line: underline; */
 }
 
@@ -20,7 +21,7 @@
   margin-left: 20%;
   word-spacing: 2px;
   text-align: justify;
-  padding: 20px;
+  padding: 20px 8px 8px;
   font-family: "Outfit", sans-serif;
   font-weight: 1000;
 }
@@ -30,18 +31,36 @@
 }
 #big-img-div {
   background-image: url("images/ZANEROBE-About-NR-Header_1512x.jpg");
+  background-size: contain;
   color: rgb(255, 255, 255);
+  max-width: 100%;
   height: 100%;
+
 }
 #big-img-div h2 {
   background-color: transparent;
-  position: relative;
-  top: 58%;
-  left: 10%;
-  color: black;
+  position: absolute;
+  top: 65%;
+  left: 12%;
+  color: rgb(255, 255, 255);
 }
 
 .brand_name.about {
   background-color: transparent;
   font-size: 50px;
+}
+
+.registered-msg-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 30%;
+  margin:0  auto;
+  height: 100%;
+  text-align: justify;
+  background-color: transparent;
+}
+p{
+  background-color: transparent;
 }

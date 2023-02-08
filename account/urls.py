@@ -19,6 +19,7 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(next_page="/account/login/"), name="logout"),
     path("register/", views.account_register, name="register"),
     path("activate/<slug:uidb64>/<slug:token>/", views.account_activate, name="activate"),
+    path("account_registered/", views.registration_done, name="registration_done"),
     # Reset password
     path(
         "password_reset/",

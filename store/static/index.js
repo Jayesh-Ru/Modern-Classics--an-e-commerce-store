@@ -39,7 +39,7 @@ form.addEventListener("submit", function (ev) {
   var custName = document.getElementById("custName").value;
   var custAdd = document.getElementById("custAdd").value;
   var custAdd2 = document.getElementById("custAdd2").value;
-  var postCode = document.getElementById("postCode").value;
+  var pincode = document.getElementById("postCode").value;
 
   $.ajax({
     type: "POST",
@@ -62,6 +62,7 @@ form.addEventListener("submit", function (ev) {
                 line2: custAdd2,
               },
               name: custName,
+              postCode: pincode,
             },
           },
         })

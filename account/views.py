@@ -68,7 +68,7 @@ def account_register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject=subject, message=message)
-            return HttpResponse('registered succesfully and activation sent')
+            return redirect('account:registration_done')
     else:
         registerForm = RegistrationForm()
     return render(request, 'account/registration/register.html', {'form': registerForm})
@@ -87,3 +87,6 @@ def account_activate(request, uidb64, token):
         return redirect('account:dashboard')
     else:
         return render(request, 'account/registration/activation_invalid.html')
+
+def registration_done(request):
+    return render(request,'account/registration/registration_done.html')

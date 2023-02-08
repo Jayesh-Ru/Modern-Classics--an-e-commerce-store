@@ -63,50 +63,9 @@
             </div>
            
             <div class="nav-bar right">
-                {% comment %} <ul class="nav-sections" id="nav-sections-right">
-                    <li class="nav-item">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                             Log-in
-                            </button>
-                            <form class="dropdown-menu p-4">
-                              <div class="mb-3">
-                                <label for="exampleDropdownFormEmail2" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-                              </div>
-                              <div class="mb-3">
-                                <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-                              </div>
-                              <button type="submit" class="btn btn-primary">Sign in</button>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-                <a type="button" role="button" href="{% url "basket:basket_summary" %}" class="btn btn-outline-secondary">
-                 
-                    {% with total_qty=basket|length %}
-                    <div id="basket-qty" class="d-inline-flex">
-                        {% if total_qty > 0 %}
-                            {{total_qty}} 
-                        {%else%}
-                            0
-                        {% endif %}
-                    </div>
-                    {% endwith%}
-                  
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
-                        <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                    </svg>
-                      Basket
-                </a> {% endcomment %}
                 {% if user.is_authenticated %}
-                    <a type="button" role="button" href="{% url "account:logout" %}"             {% comment "" %}{% endcomment %}
-                        class="btn  border-0 basket-btn">
+                    <a type="button" role="button" href="{% url "account:logout" %}"            
+                        class="btn  basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-door-closed" viewBox="0 0 16 16">
@@ -118,8 +77,8 @@
                         <span class="fs15 fw500">Logout</span>
                     </a>
                     {% else %}
-                    <a type="button" role="button" href="{% url "account:logout" %}"                 {% comment "" %}{% endcomment %}
-                        class="btn  border-0 basket-btn">
+                    <a type="button" role="button" href="{% url "account:logout" %}"                
+                        class="btn  basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-door-closed" viewBox="0 0 16 16">
@@ -133,8 +92,8 @@
                     {% endif %}
 
 
-                    <a type="button" role="button" href="{% url "account:dashboard" %}"         {% comment "" %}{% endcomment %}
-                        class="btn  border-0 basket-btn">
+                    <a type="button" role="button" href="{% url "account:dashboard" %}"         
+                        class="btn  basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
@@ -146,7 +105,7 @@
                     </a>
 
                     <a type="button" role="button" href="{% url "basket:basket_summary" %}"             
-                        class="btn  border-0 basket-btn">
+                        class="btn  basket-btn">
 
                         {% with total_qty=basket|length %}
                     <div id="basket-qty" class="d-inline-flex">

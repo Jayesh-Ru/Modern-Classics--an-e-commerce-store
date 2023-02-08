@@ -1,11 +1,12 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.core.mail import send_mail
 
 from orders.views import user_orders
 
@@ -91,3 +92,13 @@ def account_activate(request, uidb64, token):
 
 def registration_done(request):
     return render(request,'account/registration/registration_done.html')
+
+def subscribe(request):
+    user = UserBase.objects.get(user_name=request.user)
+    user.is_subscribed = True
+    user.save()
+    email = request.POST.get('email')
+    print(email)
+    send_mail(subject='Subscription confirmation', message='Thanks for subscribing',from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
+    response = JsonResponse({'success': 'Return something'})
+    return response

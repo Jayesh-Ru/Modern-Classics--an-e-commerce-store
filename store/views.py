@@ -19,3 +19,6 @@ def category_list(request, category_slug=None):
 
 def about(request):
     return render(request, 'store/about.html')
+
+def subscribe_section(request):
+    return render(request,'store/subscribe_section.html')

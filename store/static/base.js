@@ -18,6 +18,7 @@ function myFunction() {
   }
 }
 
+// pop-up sale-notification
 $("#plus").click(function () {
   $("#popUp").css("margin-left", "0px");
   $(".sale-offer-notification").css("margin-left", "-525px");
@@ -26,4 +27,35 @@ $("#plus").click(function () {
 $("#close").click(function () {
   $("#popUp").css("margin-left", "-425px");
   $(".sale-offer-notification").css("margin-left", "0px");
+});
+
+
+// 
+var button = document.querySelector('.button');
+var field = document.querySelector('.field');
+var icon = document.querySelector('.header i');
+var text = document.querySelector('.header p');
+
+button.addEventListener('click', function(){
+  
+  if(field.value === ''){
+    field.placeholder = 'You must enter your email';
+    // alert('You must enter an email');
+  } else {
+    $.ajax({
+        type : "POST",
+        url: 'http://127.0.0.1:8000/account/subscribed/',
+        data : {
+            email:field.value,
+            csrfmiddlewaretoken: CSRF_TOKEN,
+            action: "post",
+        },
+        success: function (data) {
+            console.log('success :',field.value);
+            icon.classList.toggle('animation');
+            text.classList.toggle('show');
+        }
+    });
+
+  }
 });

@@ -56,6 +56,7 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
     # User Status
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+    is_subscribed = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

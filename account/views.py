@@ -18,7 +18,6 @@ from .token import account_activation_token
 def dashboard(request):
     orders = user_orders(request)
     accounts = UserBase.objects.filter(is_active=True)
-    print(accounts)
     return render(request,
                   'account/user/dashboard.html',
                   {'section': 'profile', 'orders': orders,'account':accounts})

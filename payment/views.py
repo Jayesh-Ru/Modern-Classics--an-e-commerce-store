@@ -32,7 +32,7 @@ class Error(TemplateView):
 
 @login_required
 def BasketView(request):
-    orders = OrderDetailsForm(request.POST)
+    orders = OrderDetailsForm()
     basket = Basket(request)
     total = str(basket.get_total_price())
     total = total.replace('.', '')

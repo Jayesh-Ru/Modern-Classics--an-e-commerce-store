@@ -50,12 +50,16 @@ form.addEventListener("submit", function (ev) {
     url: "http://127.0.0.1:8000/orders/add/",
     data: {
       order_key: clientsecret,
+      full_name:custName,
+      add1:custAdd,
+      add2:custAdd2,
+      country:custCountry,
+      postcode:pincode,
       csrfmiddlewaretoken: CSRF_TOKEN,
       action: "post",
     },
     success: function (json) {
       console.log(json.success);
-      form.save();
       stripe
         .confirmCardPayment(clientsecret, {
           payment_method: {
@@ -71,11 +75,11 @@ form.addEventListener("submit", function (ev) {
         })
         .then(function (result) {
           if (result.error) {
-            console.log("payment error");
-            console.log(result.error.message);
+            alert("payment error");
+            alert(result.error.message);
           } else {
             if (result.paymentIntent.status === "succeeded") {
-              console.log("payment processed");
+              alert("payment processed");
               // There's a risk of the customer closing the window before callback
               // execution. Set up a webhook or plugin to listen for the
               // payment_intent.succeeded event that handles any business critical

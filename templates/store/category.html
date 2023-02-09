@@ -6,7 +6,6 @@
       <div class="pb-3 h5 bg-transparent">{{category.name|title}}</div>
       <div class="products-container bg-transparent">
         {% for product in products %}
-
         <div class="col bg-transparent">
           <div class="card shadow-sm bg-transparent">
             <div class="flip-card">
@@ -52,9 +51,15 @@
               </p>
               <div class="d-flex justify-content-between align-items-center">
                 <small class="text-muted">{{ product.brand }}</small>
+                {%if result == 'yes'%}
                 <small class="text-muted"
-                  ><strong>&pound;{{ product.price }}</strong></small
+                  ><strong>&pound;<s>{{ original.price }}</s>{{product.price|floatformat:2}}</strong></small
                 >
+                {% else %}
+                <small class="text-muted"
+                ><strong>&pound;{{ product.price }}</strong></small
+              >
+                {% endif %}
               </div>
             </div>
           </div>

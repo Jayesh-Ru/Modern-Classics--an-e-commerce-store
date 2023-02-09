@@ -70,5 +70,6 @@ def stripe_webhook(request):
 
     return HttpResponse(status=200)
 
-
+# def orderCancelled(request):
+#     return HttpResponse(status = 200)
 

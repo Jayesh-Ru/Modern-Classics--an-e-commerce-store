@@ -54,7 +54,7 @@
       </div>
       <div class="col-md-5 col-lg-4 order-md-last p-0 order-3">
         <div class="d-grid gap-2 ">
-          <button class="btn btn-warning" type="button">Problem with order</button>
+          <button class="btn btn-warning" type="button" id="cancel-order" data-order="{{order.order_key}}">Problem with order</button>
           <button class="btn btn-light" type="button">Leave a review</button>
         </div>
       </div>
@@ -90,8 +90,28 @@
 
   </div>
 </main>
-
-
+{% comment %} 
+<script>
+  $(document).on("click", "#cancel-order", function (e) {
+    e.preventDefault();
+    console.log("success-step1");
+    var order_key = $(this).data("order");
+    $.ajax({
+      type: "POST",
+      url: '{% url "orders:cancel" %}',
+      data: {
+        order_key: $(this).data("index"),
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        action: "post",
+      },
+      success: function (json) {
+        alert.log(json.status);
+        console.log("success-step2");
+      },
+      error: function (xhr, errmsg, err) {},
+    });
+  });
+</script> {% endcomment %}
 
 
 

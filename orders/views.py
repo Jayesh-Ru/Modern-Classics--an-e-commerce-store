@@ -47,6 +47,21 @@ def add(request):
         response = JsonResponse({'success': 'Return something'})
         return response
 
+# def cancel(request):
+#     basket = Basket(request)
+#     if request.POST.get('action') == 'post':
+#         order_key = request.POST.get('order_key')
+#     if Order.objects.filter(order_key=order_key).exists():
+#         order= Order.objects.filter(order_key=order_key)
+        
+#         subject= 'Order cancellation'
+#         message= render_to_string('payment/order_cancellation.html', {
+#                 'name': request.user.full_name,
+#         })
+#         send_mail(subject=subject, message=message,from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
+
+#     response = JsonResponse({'success': 'Order cancelled'})
+#     return response
 
 def payment_confirmation(data):
     Order.objects.filter(order_key=data).update(billing_status=True)

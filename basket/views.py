@@ -2,11 +2,21 @@ from django.shortcuts import render,get_object_or_404
 from .basket import Basket
 from store.models import Product
 from django.http import JsonResponse
+from account.models import UserBase
 
 # Create your views here.
 def basket_summary(request):
-    basket=Basket(request)
-    return render(request, 'store/basket/summary.html')
+    try:
+        user = UserBase.objects.get(user_name = request.user.user_name)
+        if user.is_subscribed:
+            result = 'yes' 
+        else:
+            result = 'no'                                                           #without [0]...we were getting a queryset but by specifying the position we are getting an object
+    except:
+        result='no'
+    basket=Basket(request)                                                      #from the query set. This is not correct logic as when the user isn't subscribed this will give an
+    print(result)                                                               # IndexError 
+    return render(request, 'basket/summary.html',{'result':result})
 
 def basket_add(request):
     basket = Basket(request)

@@ -1,0 +1,31 @@
+{% extends '../base.html' %} {%load static%} {%block content %}
+
+<div id="big-img-div">
+  <h2>We are <span class="brand_name about">Modern Classics</span></h2>
+</div>
+<div class="about-div">
+  <p>
+    <span class="brand_name">Modern Classics</span> is a website that i (<i
+      >Jayesh Khairnar</i
+    >) have created as my capstone project while learning django-full stack web
+    development. I chose to build an E-commerce store cause the oppurtunities
+    and possibilties are endless when it comes to an E-commerce store, as
+    there's so much to do and i really got to learn a lot more while working on
+    this website than i had while theoretically learning the technologies such
+    as django.
+  </p>
+  <p>
+    For the front-end and for overall structure of the website i took
+    inspiration from the website <span class="brand_name">ZANEROBE</span>.
+    Anyone interested in checking out their website can do so by clcking on the
+    link <a href="https://zanerobe.com/" target="_blank">here</a>. So Finally
+    thank you for visiting and have a great day.
+  </p>
+  <p>We are <span class="brand_name">Modern Classics</span></p>
+  <img
+    id="sml-img-div"
+    src="{% static 'images/ZANEROBE-About-NR-2.jpg' %}"
+    alt="image"
+  />
+</div>
+{%endblock%}

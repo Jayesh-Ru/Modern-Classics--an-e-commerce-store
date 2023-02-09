@@ -1,0 +1,182 @@
+#account-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+/* #user-name {
+  justify-self: center;
+} */
+
+.heading-font-style {
+  font-family: "Outfit", sans-serif;
+  font-weight: 800;
+  background-color: transparent;
+  /* text-decoration-line: underline; */
+}
+
+/* about-page-styling */
+.about-div {
+  width: 60%;
+  margin-left: 20%;
+  word-spacing: 2px;
+  text-align: justify;
+  padding: 20px 8px 8px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 1000;
+}
+
+#sml-img-div {
+  width: 100%;
+}
+#big-img-div {
+  background-image: url("images/ZANEROBE-About-NR-Header_1512x.jpg");
+  background-size: contain;
+  color: rgb(255, 255, 255);
+  max-width: 100%;
+  height: 100%;
+}
+#big-img-div h2 {
+  background-color: transparent;
+  position: absolute;
+  top: 65%;
+  left: 12%;
+  color: rgb(255, 255, 255);
+}
+
+.brand_name.about {
+  background-color: transparent;
+  font-size: 50px;
+}
+
+/* order-confirmation and contact page styling */
+.registered-msg-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 40%;
+  margin:0  auto;
+  height: 100%;
+  text-align: justify;
+  background-color: transparent;
+}
+/* .registered-msg-div hr{
+  color:black !important;
+} */
+.registered-msg-div ul{
+    list-style: none;
+    text-align: justify;
+}
+/* subscribe-section */
+.sub-div{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: 20px ;
+
+}
+.sub-div img{
+  background-color: transparent;
+  object-fit: contain;
+  height: 70%;
+  width: 50%;
+}
+.sub-desc{
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+}
+
+.box {
+  width: 300px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 20px;
+  font-family: "Poppins", sans-serif;
+  padding: 20px 30px 30px 30px;
+  background: #fff;
+  position: relative;
+}
+input {
+  display: block;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #585858;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+.button {
+  border-radius: 100px;
+  border: none;
+  padding: 16px;
+  font-weight: bold;
+  background: #00d7fb;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:all .3s;
+}
+.button:hover {
+  background: #0193ac;
+  color: #fff;
+}
+
+.field {
+  border-radius: 100px;
+  border: none;
+  padding: 16px;
+  background: #f1f1f1;
+}
+.hidden {
+  visibility: hidden;
+}
+.show {
+  visibility: visible;
+}
+.header {
+  position: absolute;
+  background: #00d7fb;
+  width: 100%;
+  height:90px;
+  padding:20px 0; 
+  left:0;
+  top:0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  color:#fff;
+  text-align:center;
+  font-size:3em;
+  overflow:hidden;
+}
+.header p {
+  margin:0;
+  position:absolute;
+  top:20%;
+  left:28%;
+  font-size:40px;
+}
+
+.animation {
+  position:absolute;
+  animation: mymove 0.5s forwards;
+}
+
+@keyframes mymove {
+  0%   {left: 50%;}
+  100%  {left: 120%;}
+}
+.form {
+  padding-top: 90px;
+}

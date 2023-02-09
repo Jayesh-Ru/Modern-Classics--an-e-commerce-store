@@ -1,0 +1,169 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title class="brand_name">{% block title %}Modern Classics{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href=" {% static 'extra.css' %}">
+    <link rel="stylesheet" href=" {% static 'base.css' %}">
+    <link rel="stylesheet" href=" {% static 'home.css' %}">
+    <link rel="stylesheet" href=" {% static 'category.css' %}">
+    <link rel="stylesheet" href=" {% static 'collections.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar" id="navbar">
+            <h1 id="brand_name">Modern Classics</h1>
+            <div class="nav-bar left">
+               
+                <ul class="nav-sections" id="nav-sections-left">
+                    <li class="nav-item">
+                        <a href="/">HOME</a>
+                    </li>
+                    {% comment %} <li class="nav-item">
+                        <a href="#">SHOP</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a href="#">NEW ARRIVALS</a> 
+                    </li>                 
+                    <li class="nav-item dropdown">
+                            
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                CATEGORY
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                
+                                <li><a class="dropdown-item" href="{% url "store:product_all" %}">All</a></li>
+                                
+                                {% for c in categories %}
+                                
+                                <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+                                    <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                                </li>
+                                
+                                {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'saved:wishlist' %}">WISHLIST</a>
+                    </li>
+
+                </ul>
+            </div>
+           
+            <div class="nav-bar right">
+                {% if user.is_authenticated %}
+                    <a type="button" role="button" href="{% url "account:logout" %}"            
+                        class="btn  basket-btn">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                class="bi bi-door-closed" viewBox="0 0 16 16">
+                                <path
+                                    d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
+                                <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
+                            </svg>
+                        </div>
+                        <span class="fs15 fw500">Logout</span>
+                    </a>
+                    {% else %}
+                    <a type="button" role="button" href="{% url "account:logout" %}"                
+                        class="btn  basket-btn">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                class="bi bi-door-closed" viewBox="0 0 16 16">
+                                <path
+                                    d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
+                                <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
+                            </svg>
+                        </div>
+                        <span class="fs15 fw500">Login</span>
+                    </a>
+                    {% endif %}
+
+
+                    <a type="button" role="button" href="{% url "account:dashboard" %}"         
+                        class="btn  basket-btn">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg>
+                        </div>
+                        <span class="fs15 fw500">Account</span>
+                    </a>
+
+                    <a type="button" role="button" href="{% url "basket:basket_summary" %}"             
+                        class="btn  basket-btn">
+
+                        {% with total_qty=basket|length %}
+                    <div id="basket-qty" >
+                        {% if total_qty > 0 %}
+                            {{total_qty}} 
+                        {%else%}
+                            0
+                        {% endif %}
+                    </div>
+                    {% endwith%}
+                  
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" fill="currentColor"
+                                class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                    </a>
+            </div>   
+        </nav>
+                  
+    </header>
+    <div id="content">{% block content %} {% endblock %}</div>
+    <footer>
+        <div class="footer">
+                <div class="our-story" id="our-story">
+                        <h6>Our Story</h6>
+                        <p>Our origin story is more of an origin statement. We wanted to design what we wanted to wear – so we did. 
+
+                            
+                            We’re for good times and even greater design. And we create what you want to wear because we wear it too. <br><br>
+                            
+                            We are <span class="brand_name">Modern Classics</span>.
+                        </p>
+                        <div class="copywright">
+                            <p><small>&copy;<span class="brand_name">Modern Classics</span> by <a href="https://jayesh-khairnar.netlify.app/" target='_blank'>Jayesh Khairnar</a></small></p>
+                        </div>
+                </div>
+                <ul class="footer-sections">
+                    <li class="nav-item">
+                        <a href="{% url "store:about" %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url "store:contact_us" %}">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url "store:subscribe_section" %}">Subscribe</a>
+                    </li>
+                </ul>
+                
+        </div>
+      
+  <div id="popUp">
+    <div id="close" class="close"><i class="fa fa-times"></i></div>
+    <div id="new"><span>OFFER!</span></div>
+    <h2>We are giving away a 10% discount for all customers who wish to subscribe to our email service. So what are you waiting for, just click the button below to avail the discount</h2>
+    <br>
+    <a href="{% url "store:subscribe_section" %}"  class="button">Subscribe</a>
+  </div>
+  <button class="sale-offer-notification" id="plus">TAKE 10%</button>
+    </footer>
+    <script src="{% static 'base.js'%}"></script>
+</body>
+</html>

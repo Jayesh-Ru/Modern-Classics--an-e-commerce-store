@@ -1,0 +1,56 @@
+{% extends "../base.html"%}
+{% load static%}
+{% comment %} {%block title %}ClothingStore{% endblock %} {% endcomment %}
+
+{% block content%}
+<main>
+  <div class="slider">
+    <div class="slider__content">
+      <img src="{% static 'images/ZANEROBE-3-4-Puffer-Home_2700x.jpg' %}" alt="image2"/>
+      <div class="slider__description">
+        <h1>New Arrivals</h1>
+        <p>
+          The newest fashion in town 
+        </p>
+        <a href="#">Know More</a>
+      </div>
+    </div>
+  </div>
+    
+    <div class="outer-container">
+  
+      <div class="h5">"Fashions fade, style is eternal." —<i>Yves Saint Laurent</i></div>
+        <div class="main-container">
+  
+          {% for c in categories %}
+  
+          <div class="categories-container">
+            <div class="categories-list">
+              <img class="img"  alt="Responsive image" src="{{ c.category_image.url }}">
+              <div class="custom-card-body" >
+                <p class="custom-card-text" >
+                  <a class="text-dark text-decoration-none" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                </p>
+                {% comment %} <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">9min read</small>
+                </div> {% endcomment %}
+              </div>
+            </div>
+          </div>
+  
+          {% endfor %}
+  
+        </div>
+
+        
+          
+        
+      </div>
+    </div>
+    
+
+  
+  </main>
+  
+
+{% endblock %}

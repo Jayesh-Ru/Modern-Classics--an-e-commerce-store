@@ -1,149 +1,153 @@
-
-
-main{
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    background-color: rgb(236, 236, 224);
+main {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: rgb(236, 236, 224);
 }
 
-  
-  .slider {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: transparent;
-  }
-  .slider input[type=radio] {
-    position: relative;
-    margin: 0 1rem 1rem 0;
-    transform: scale(1.5);
-    z-index: 10;
-  }
-  .slider input[type=radio]:checked + .slider__content {
-    transition-delay: 0.5s;
-    background-color: transparent;
-    /* -webkit-clip-path: circle(100vw at center);
+.slider {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: transparent;
+}
+.slider input[type="radio"] {
+  position: relative;
+  margin: 0 1rem 1rem 0;
+  transform: scale(1.5);
+  z-index: 10;
+}
+.slider input[type="radio"]:checked + .slider__content {
+  transition-delay: 0.5s;
+  background-color: transparent;
+  /* -webkit-clip-path: circle(100vw at center);
             clip-path: circle(100vw at center); */
-    z-index: 9;
-  }
-  .slider .slider__content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: z-index 1.5s linear;
-    /* -webkit-clip-path: circle(00px at center);
+  z-index: 9;
+}
+.slider .slider__content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: z-index 1.5s linear;
+  /* -webkit-clip-path: circle(00px at center);
             clip-path: circle(00px at center); */
-    z-index: 5;
-  }
-  .slider .slider__content img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  .slider .slider__content .slider__description {
-    position: relative;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #fff;
-    max-width: auto;
-  }
-  .slider .slider__content .slider__description h1 {
-    font-size: 5rem;
-  }
-  .slider .slider__content .slider__description p {
-    font-size: 1.3rem;
-    line-height: 1.8rem;
-    margin: 1rem 0 2rem 0;
-  }
-  .slider .slider__content .slider__description a {
-    display: inline-block;
-    padding: 10px 15px;
-    border-radius: 50px;
-    background-color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-    transition: 0.5s;
-  }
-  .slider .slider__content .slider__description a:hover,.custom-card-text a:hover {
-    opacity: 0.5;
-  }
-  .slider__description,.slider__description>h1,.slider__description>p{
-    background-color: transparent;
-  }
+  z-index: 5;
+}
+.slider .slider__content img {
+  top:-15px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.slider .slider__content .slider__description {
+  position: relative;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(221, 220, 220);
+  max-width: auto;
+}
+.slider .slider__content .slider__description h1 {
+  font-size: 5rem;
+}
+.slider .slider__content .slider__description p {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  margin: 1rem 0 2rem 0;
+ 
+}
+.slider .slider__content .slider__description a {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 50px;
+  background-color: rgb(187, 160, 160);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  transition: 0.5s;
+}
+.slider .slider__content .slider__description a:hover,
+.custom-card-text a:hover {
+  opacity: 0.5;
+}
+.slider__description,
+.slider__description > h1,
+.slider__description > p {
+  background-color: transparent;
+}
 
-  /*The shop by category section in the home page  */
-  
-  .outer-container{
-    width: 100%;
-    padding: 15px;
-    margin-top:20px;
-    background-color:rgb(236, 236, 224);
-  }
-  .h5{
-    font-weight: bolder;
-    font-size: 30px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    background-color: rgb(236, 236, 224);
-  }
-  .h5 i{
-    background-color: rgb(236, 236, 224);
+/*The shop by category section in the home page  */
 
-  }
-  .main-container{
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap:wrap;
-    background-color: rgb(236, 236, 224);
-  }
-  .categories-list{
-    width: 400px;
-    height: 450px;
-    margin:5px 5px 5px 5px;
-    overflow: hidden;
-  }
-  .categories-list img{
-    width: 400px;
-    height: 450px;
-    transition: 1.5s;
-    
-  }
-  .categories-list:hover >img{
-    width: 450px;
-    height: 500px;
-    transition: 1.5s; 
-  }
-  
-  .custom-card-text{
-    background: transparent;
-    position: relative;
-    top:-255px;
-    left: 38%;
-  }
-  .custom-card-text a{
-    background-color: rgba(255, 255, 255, 0.722);
-    display: inline-block;
-    padding: 10px 15px;
-    border-radius: 50px;
-    background-color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: rgb(236, 236, 224);
-    text-decoration: none;
-    transition: 0s;
-  }
+.outer-container {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: rgb(236, 236, 224);
+}
+.h5 {
+  font-weight: bolder;
+  font-size: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  background-color: rgb(236, 236, 224);
+}
+.h5 i {
+  background-color: rgb(236, 236, 224);
+}
+.main-container {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: rgb(236, 236, 224);
+}
+.categories-list {
+  width: 400px;
+  height: 450px;
+  margin: 5px 5px 5px 5px;
+  overflow: hidden;
+}
+.categories-list img {
+  width: 400px;
+  height: 450px;
+  transition: 1.5s;
+}
+.categories-list:hover > img {
 
-  
+  width: 450px;
+  height: 500px;
+  transition: 1.5s;
+}
+
+.custom-card-text {
+  background: transparent;
+  position: relative;
+  top: -255px;
+  left: 38%;
+}
+.custom-card-text a {
+  background-color: rgba(255, 255, 255, 0.722);
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 50px;
+  background-color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(236, 236, 224);
+  text-decoration: none;
+  transition: 0s;
+}
+
+#content {
+  margin-top: 15px;
+  background-color: transparent;
+}

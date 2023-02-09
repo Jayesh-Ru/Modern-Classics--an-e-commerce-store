@@ -93,6 +93,7 @@ def account_activate(request, uidb64, token):
 def registration_done(request):
     return render(request,'account/registration/registration_done.html')
 
+@login_required
 def subscribe(request):
     user = UserBase.objects.get(user_name=request.user)
     user.is_subscribed = True

@@ -6,11 +6,14 @@ from account.models import UserBase
 
 # Create your views here.
 def basket_summary(request):
-    user = UserBase.objects.get(user_name = request.user.user_name)
-    if user.is_subscribed:
-        result = 'yes' 
-    else:
-        result = 'no'                                                           #without [0]...we were getting a queryset but by specifying the position we are getting an object
+    try:
+        user = UserBase.objects.get(user_name = request.user.user_name)
+        if user.is_subscribed:
+            result = 'yes' 
+        else:
+            result = 'no'                                                           #without [0]...we were getting a queryset but by specifying the position we are getting an object
+    except:
+        result='no'
     basket=Basket(request)                                                      #from the query set. This is not correct logic as when the user isn't subscribed this will give an
     print(result)                                                               # IndexError 
     return render(request, 'basket/summary.html',{'result':result})

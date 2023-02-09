@@ -89,6 +89,24 @@ body {
   z-index: 10000;
 }
 
+#basket-qty {
+  position: absolute;
+  right:25px;
+  top: 6px;
+  background-color: rgb(236, 236, 224);
+  color:rgb(0, 0, 0);
+  font-size: small;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+}
+.bi.bi-cart3{
+  margin-top: -5px;
+}
+
+
 /* 
   */
 
@@ -102,8 +120,8 @@ a {
   z-index: 222;
   max-width: 350px;
   height: 225px;
-  background: black;
-  border: 7px solid black;
+  background: rgb(143, 111, 111);
+  border: 7px solid rgb(255, 255, 255);
   margin-left: -525px;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
@@ -112,9 +130,9 @@ a {
 }
 
 #new span {
-  background: black;
+  background: rgb(159, 158, 158);
   position: absolute;
-  color: #1c8dc4;
+  color: #2f3538;
   border: 1.7px solid white;
   padding: 4px 10px;
   font-size: 16px;
@@ -135,10 +153,10 @@ a {
 
 #popUp h2 {
   font-size: 17px;
-  color: blue;
+  color: rgb(0, 0, 0);
   background: transparent;
   line-height: 24px;
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
   margin-top: 40px;
   padding: 0 20px;
@@ -158,9 +176,9 @@ a.button {
   position: absolute;
   width: 120px;
   font-size: 15px;
-  color: white;
-  border-bottom: 2px solid #18729f;
-  background: #1c8dc4;
+  color: rgb(0, 0, 0);
+  border-bottom: 2px solid #ffffff;
+  background: #baa895;
   border-radius: 4px;
   padding: 8px 0;
 }
@@ -199,19 +217,58 @@ a.button {
 }
 
 /*  */
-#basket-qty {
-  position: absolute;
-  right:25px;
-  top: 6px;
-  background-color: rgb(236, 236, 224);
-  color:rgb(0, 0, 0);
-  font-size: small;
-  font-weight: bold;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  text-align: center;
+@media only screen and (max-width:600px) {
+  /* body{
+    max-width: 100vw;
+  } */
+  #brand_name{font-size: 18px; padding-left: 8px;}
+  .nav-bar{
+    height: 50px;
+    align-items:center;
+  }
+  .nav-bar.left{
+    padding-left: 0px;
+    height: 10px;
+  }
+  .nav-bar.right{
+    margin: 0;
+    height: 10px;
+  }
+  .nav-bar.right svg{
+    height: 20px;
+    width: 20px;
+  }
+  .nav-bar.right span{
+    font-size: 10px;
+  }
+  .nav-item{
+    margin-right: 6px;
+  }
+  .nav-sections{
+    font-size:10px;
+    padding: 0;
+  }
+  .footer{
+    padding-top: 5px;
+    padding-bottom: 2px;
+  }
+  .our-story {
+  padding-left: 10px;
+  width: 60%;
 }
-.bi.bi-cart3{
-  margin-top: -5px;
+.our-story p{
+  font-size: smaller;
+}
+.footer-sections li {
+  padding-left: 5px;
+}
+.copywright {
+  margin-left: 180px;
+}
+#content{
+ margin-top: 30px;
+}
+#basket-qty {
+  right:6px;
+}
 }

@@ -56,9 +56,7 @@
                     <li class="nav-item">
                         <a href="{% url 'saved:wishlist' %}">WISHLIST</a>
                     </li>
-                    <li class="nav-item">
-                       
-                    </li>
+
                 </ul>
             </div>
            
@@ -108,7 +106,7 @@
                         class="btn  basket-btn">
 
                         {% with total_qty=basket|length %}
-                    <div id="basket-qty" class="d-inline-flex">
+                    <div id="basket-qty" >
                         {% if total_qty > 0 %}
                             {{total_qty}} 
                         {%else%}
@@ -140,7 +138,7 @@
                             We are <span class="brand_name">Modern Classics</span>.
                         </p>
                         <div class="copywright">
-                            <p><small>&copy;<span class="brand_name">Modern Classics</span> by Jayesh Khairnar</small></p>
+                            <p><small>&copy;<span class="brand_name">Modern Classics</span> by <a href="https://jayesh-khairnar.netlify.app/" target='_blank'>Jayesh Khairnar</a></small></p>
                         </div>
                 </div>
                 <ul class="footer-sections">
@@ -148,7 +146,7 @@
                         <a href="{% url "store:about" %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Contact Us</a>
+                        <a href="{% url "store:contact_us" %}">Contact Us</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url "store:subscribe_section" %}">Subscribe</a>

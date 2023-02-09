@@ -2,15 +2,11 @@
 
 * {
   margin-top: 0px;
-  background-color: whitesmoke;
+  background-color: none;
 }
-html{
-  height: -webkit-fill-available; /* We have to fix html height */
 
-}
 body {
   background-color: rgb(236, 236, 224);
-  min-height: 100vh;
 
 }
 
@@ -21,6 +17,7 @@ body {
   /* align-content: center; */
   padding-top: 5px;
   z-index: 100;
+  background-color: rgb(253, 253, 253);
 }
 
 .brand_name {
@@ -35,8 +32,11 @@ body {
   padding-left: 10px;
 }
 .nav-bar .right {
-  padding-left: 30px;
+  margin-top:-15px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
+
 .nav-sections {
   display: flex;
   align-items: center;
@@ -63,6 +63,7 @@ body {
   font-size: small;
   margin-top:auto;
   padding-bottom: 10px;
+  background-color:  rgb(253, 253, 253);
 }
 .our-story {
   padding-left: 50px;
@@ -199,7 +200,18 @@ a.button {
 
 /*  */
 #basket-qty {
-  position: relative;
-  top: -1%;
-  left: 1%;
+  position: absolute;
+  right:25px;
+  top: 6px;
+  background-color: rgb(236, 236, 224);
+  color:rgb(0, 0, 0);
+  font-size: small;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+}
+.bi.bi-cart3{
+  margin-top: -5px;
 }

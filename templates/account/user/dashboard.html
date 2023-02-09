@@ -1,4 +1,4 @@
-{% extends "../../base.html" %} {% load static %} {% block title %}Basket Summary{%endblock %} {% block content %}
+{% extends "../../base.html" %} {% load static %} {% block title %}My Account{%endblock %} {% block content %}
 
 <main class="pt-5 bg-transparent">
   <div class="container" style="max-width: 1000px">
@@ -59,11 +59,11 @@
         </div>
       </div>
 
-      <div class="col-md-7 col-lg-8 p-0">
+      <div class="col-md-7 bg-transparent col-lg-8 p-0">
 
         {% for item in order.items.all %}
 
-        <div class="mb-3 border-0">
+        <div class="mb-3 bg-transparent border-0">
           <div class="row g-0">
             <div class="col-md-2 d-none d-md-block">
               <img class="img-fluid" style="width:90px" src="{{item.product.image.url}}" />
@@ -87,31 +87,18 @@
 
     </div>
     {% endfor %}
-
   </div>
 </main>
-{% comment %} 
+ 
 <script>
-  $(document).on("click", "#cancel-order", function (e) {
+  $(document).on("click", ".cancel-order", function (e) {
     e.preventDefault();
     console.log("success-step1");
     var order_key = $(this).data("order");
-    $.ajax({
-      type: "POST",
-      url: '{% url "orders:cancel" %}',
-      data: {
-        order_key: $(this).data("index"),
-        csrfmiddlewaretoken: "{{csrf_token}}",
-        action: "post",
-      },
-      success: function (json) {
-        alert.log(json.status);
-        console.log("success-step2");
-      },
-      error: function (xhr, errmsg, err) {},
-    });
+    console.log(order_key)
+
   });
-</script> {% endcomment %}
+</script> 
 
 
 

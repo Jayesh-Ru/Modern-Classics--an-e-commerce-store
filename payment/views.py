@@ -37,15 +37,18 @@ def BasketView(request):
     total = str(basket.get_total_price())
     total = total.replace('.', '')
     total = int(total)
-
-    stripe.api_key = 'sk_test_51MYZBdSDcRej9N7gQrQyYCOyoxGvcW6bmAsdgkUU7N8SWuKY25uu8UEY3zw3LwkKrnyTxhQ7HrjQX3O9f9suWpt2008Nlf5vt6'
-    intent = stripe.PaymentIntent.create(
-        amount=total,
-        currency='INR',
-        metadata={'userid': request.user.id}
-    )
-
-    return render(request, 'payment/home.html', {'client_secret': intent.client_secret,'form':orders})
+    try:
+        stripe.api_key = 'sk_test_51MYZBdSDcRej9N7gQrQyYCOyoxGvcW6bmAsdgkUU7N8SWuKY25uu8UEY3zw3LwkKrnyTxhQ7HrjQX3O9f9suWpt2008Nlf5vt6'
+        intent = stripe.PaymentIntent.create(
+            amount=total,
+            currency='INR',
+            metadata={'userid': request.user.id}
+        )
+        return render(request, 'payment/home.html', {'client_secret': intent.client_secret,'form':orders})
+    except:
+        print('No item for checkout..please check again')
+        return render(request, 'basket/summary.html ')
+   
 
 
 @csrf_exempt

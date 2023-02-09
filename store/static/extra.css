@@ -50,21 +50,25 @@
   font-size: 50px;
 }
 
+/* order-confirmation and contact page styling */
 .registered-msg-div{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 30%;
+  max-width: 40%;
   margin:0  auto;
   height: 100%;
   text-align: justify;
   background-color: transparent;
 }
-p{
-  background-color: transparent;
+/* .registered-msg-div hr{
+  color:black !important;
+} */
+.registered-msg-div ul{
+    list-style: none;
+    text-align: justify;
 }
-
 /* subscribe-section */
 .sub-div{
   background-color: transparent;

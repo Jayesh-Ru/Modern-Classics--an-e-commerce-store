@@ -41,3 +41,6 @@ def about(request):
 
 def subscribe_section(request):
     return render(request,'store/subscribe_section.html')
+
+def contact_section(request):
+    return render(request,'store/contactus.html')

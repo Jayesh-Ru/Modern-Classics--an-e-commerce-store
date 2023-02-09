@@ -145,3 +145,4 @@ class OrderDetailsForm(forms.ModelForm):
         self.fields['address_2'].required = False
         self.fields['country'].required = True
         self.fields['postcode'].required = True
+

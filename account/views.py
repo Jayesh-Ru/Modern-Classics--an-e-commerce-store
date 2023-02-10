@@ -100,6 +100,10 @@ def subscribe(request):
     user.save()
     email = request.POST.get('email')
     print(email)
-    send_mail(subject='Subscription confirmation', message='Thanks for subscribing',from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
-    response = JsonResponse({'success': 'Return something'})
+    try:
+        send_mail(subject='Subscription confirmation', message='Thanks for subscribing',from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
+        answer = 'Email sent'
+    except:
+        answer = 'Please provide email in the correct format'
+    response = JsonResponse({'success': answer})
     return response

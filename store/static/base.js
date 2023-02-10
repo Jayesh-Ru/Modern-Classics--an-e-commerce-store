@@ -50,10 +50,16 @@ button.addEventListener('click', function(){
             csrfmiddlewaretoken: CSRF_TOKEN,
             action: "post",
         },
-        success: function (data) {
-            console.log('success :',field.value);
-            icon.classList.toggle('animation');
-            text.classList.toggle('show');
+        success: function (json) {
+           
+            if (json.success === 'Email sent') {
+              icon.classList.toggle('animation');
+              text.classList.toggle('show');  
+            }
+            else{
+              alert(json.success);
+            }
+
         }
     });
 

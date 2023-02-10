@@ -24,7 +24,6 @@
   </div>
   <div class="container" style="max-width: 1000px">
     {% for order in orders %}
-    <script>console.log('success');</script>
     <div class="row g-3">
       
       <div class="col-12  p-3 d-flex justify-content-between">
@@ -54,8 +53,8 @@
       </div>
       <div class="col-md-5 col-lg-4 order-md-last p-0 order-3">
         <div class="d-grid gap-2 ">
-          <button class="btn btn-warning" type="button" id="cancel-order" data-order="{{order.order_key}}">Problem with order</button>
-          <button class="btn btn-light" type="button">Leave a review</button>
+          <button class="btn btn-warning" type="button" id="cancel-order" data-order="{{order}}">Cancell order</button>
+          <button class="btn btn-light" type="button" id= "leave-review">Leave a review</button>
         </div>
       </div>
 
@@ -91,11 +90,36 @@
 </main>
  
 <script>
-  $(document).on("click", ".cancel-order", function (e) {
+  $(document).on("click", "#cancel-order", function (e) {
     e.preventDefault();
+    var order_id = $(this).data("order");
+    console.log(order_id);
+    $.ajax({
+      type: "POST",
+      url: '{% url "orders:cancel" %}',
+      data: {
+        order_id: $(this).data("order"),
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        action: "post",
+      },
+      success: function (json) {
+        if (json.success ==='Order cancelled'){
+         console.log("success");
+         location.reload();
+        }
+        else{
+          alert('error occurred , try again');
+        }
+         
+      },
+      error: function (xhr, errmsg, err) {},
+    });
+  });
+
+  $(document).on("click", "#leave-review", function (e) {
+    e.preventDefault();
+    alert("This feature is yet not available \n we're working on it!");
     console.log("success-step1");
-    var order_key = $(this).data("order");
-    console.log(order_key)
 
   });
 </script> 

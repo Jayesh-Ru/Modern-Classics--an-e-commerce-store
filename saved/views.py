@@ -13,7 +13,11 @@ def wishlist(request):
 def add_item(request):
     basket = Basket(request)
     if request.POST.get('action') == 'post':
-        product_id = int(request.POST.get('productid'))
+        try:
+            product_id = int(request.POST.get('productid'))
+        except:
+            print('an error occured here')
+
         product = get_object_or_404(Product, id=product_id)
         if product.is_wishlisted:
             product.is_wishlisted = False

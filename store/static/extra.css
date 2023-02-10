@@ -180,3 +180,8 @@ input {
 .form {
   padding-top: 90px;
 }
+
+/*  */
+.ajaxLoading {  
+  cursor: progress !important;  
+} 

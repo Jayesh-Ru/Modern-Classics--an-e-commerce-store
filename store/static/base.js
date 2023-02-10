@@ -46,6 +46,7 @@ button.addEventListener('click', function(){
         type : "POST",
         url: 'http://127.0.0.1:8000/account/subscribed/',
         data : {
+            purpose:'sale10%',
             email:field.value,
             csrfmiddlewaretoken: CSRF_TOKEN,
             action: "post",
@@ -66,3 +67,34 @@ button.addEventListener('click', function(){
   }
 });
 
+//
+var button_new_arrival = document.querySelector('.searchButton');
+var input = document.querySelector('.searchInput');
+
+button_new_arrival.addEventListener('click', function(){
+  
+  if(input.value === ''){
+    input.placeholder = 'You must enter your email';
+    // alert('You must enter an email');
+  } else {
+    $.ajax({
+        type : "POST",
+        url: 'http://127.0.0.1:8000/account/subscribed/',
+        data : {
+            purpose:'new-arrival',
+            email:input.value,
+            csrfmiddlewaretoken: CSRF_TOKEN,
+            action: "post",
+        },
+        success: function (json) {
+            if (json.success === 'Email sent') {
+              alert(json.success)
+            }
+            else{
+              alert(json.success);
+            }
+        }
+    });
+
+  }
+});

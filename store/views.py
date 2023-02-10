@@ -52,3 +52,6 @@ def subscribe_section(request):
 
 def contact_section(request):
     return render(request,'store/contactus.html')
+
+def new_arrival(request):
+    return render(request,'store/new_arrivals.html')

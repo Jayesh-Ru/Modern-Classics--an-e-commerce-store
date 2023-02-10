@@ -36,15 +36,13 @@ var form = document.getElementById("payment-form");
 
 form.addEventListener("submit", function (ev) {
   ev.preventDefault();
-  
   var custName = document.getElementById("custName").value;
   var custAdd = document.getElementById("custAdd").value;
   var custAdd2 = document.getElementById("custAdd2").value;
   var pincode = document.getElementById("postCode").value;
-  var custCity = document.getElementById("state").value;
+  var custState = document.getElementById("state").value;
   var custCountry = document.getElementById("id_country").value;
   // var custPhone = document.getElementById("postCode").value;
-
   $.ajax({
     type: "POST",
     url: "http://127.0.0.1:8000/orders/add/",
@@ -53,6 +51,7 @@ form.addEventListener("submit", function (ev) {
       full_name:custName,
       add1:custAdd,
       add2:custAdd2,
+      state:custState,
       country:custCountry,
       postcode:pincode,
       csrfmiddlewaretoken: CSRF_TOKEN,

@@ -32,12 +32,12 @@
           </div>
         </div>
         <div class="text-end">
-          {% if result == 'yes' %}
+          {% if result == 'yes' and basket.get_total_price > 0 %}
           <div class="">Sub Total: <span class="fw-bold">£</span><div id="subtotal" class="d-inline-flex fw-bold">{{basket.get_subtotal_price}}</div></div>
           <div id="">Shipping <span class="small">(Next day delivery)</span>: <span class="fw-bold">£11.50</span></div>
-          <div class="">Subscriber discount: <span class="fw-bold">£</span><div id="subtotal" class="d-inline-flex fw-bold">{{basket.discount|floatformat:2}}</div></div>
-          <div class="pt-2">Total to pay: <span class="fw-bold h5">£</span><span id="total" class="fw-bold h5"><s>{{basket.get_total_price}}</s></span></div>
-          <div class="pt-2">Total to pay: <span class="fw-bold h5">£</span><span id="total" class="fw-bold h5">{{basket.get_discounted_price|floatformat:2}}</span></div>
+          <div class="">Subscriber discount: <span class="fw-bold">£</span><div id="discount" class="d-inline-flex fw-bold">{{basket.discount|floatformat:2}}</div></div>
+          <div class="pt-2">Total to pay: <span class="fw-bold h5">£</span><span id="total" class="fw-bold h5">{{basket.get_total_price}}</span></div>
+          <div class="pt-2">Total after discount: <span class="fw-bold h5">£</span><span id="discounted-total" class="fw-bold h5">{{basket.get_discounted_price|floatformat:2}}</span></div>
           {% else %}
           <div class="">Sub Total: <span class="fw-bold">£</span><div id="subtotal" class="d-inline-flex fw-bold">{{basket.get_subtotal_price}}</div></div>
           <div id="">Shipping <span class="small">(Next day delivery)</span>: <span class="fw-bold">£11.50</span></div>
@@ -56,7 +56,7 @@
         {% for item in basket %} 
         {% with product=item.product %}
 
-        <div class="card mb-3 bg-transparent border-0 product-item" data-index="{{product.id}}">
+        <div class="card mb-3 bg-transparent border-0 product-item" style="height:90px ;width:300px" data-index="{{product.id}}">
           <div class="row bg-light g-0">
             <div class="col-md-2 d-none d-md-block">
               <img class="img-fluid mx-auto d-block" alt="Responsive image"
@@ -108,15 +108,24 @@
           if(json.qty == 0){
             total = 0
             subtotal = 0
+            discount = 0
+            discounted_price = 0
           }
           else{
-            total = (parseFloat(json.subtotal) + 11.50).toFixed(2);
+            subtotal =(parseFloat(json.subtotal)).toFixed(2); 
+            total = (parseFloat(json.total)).toFixed(2);
+            discounted_price =(parseFloat(json.discounted_price)).toFixed(2);
+            discount =(parseFloat(json.discount)).toFixed(2);
             subtotal = json.subtotal
           }
 
+        
+        document.getElementById("discounted-total").innerHTML = discounted_price;
+        document.getElementById("discount").innerHTML =discount;
         document.getElementById("subtotal").innerHTML = subtotal;
         document.getElementById("basket-qty").innerHTML = json.qty;
         document.getElementById("total").innerHTML = total;
+    
       },
       error: function (xhr, errmsg, err) {},
     });
@@ -137,10 +146,17 @@
       },
       success: function (json) {
 
-        total = (parseFloat(json.subtotal) + 11.50).toFixed(2);
+        subtotal =(parseFloat(json.subtotal)).toFixed(2);
+        total = (parseFloat(json.total)).toFixed(2);
+        discounted_price =(parseFloat(json.discounted_price)).toFixed(2);
+        discount =(parseFloat(json.discount)).toFixed(2);
+
         document.getElementById("basket-qty").innerHTML = json.qty;
         document.getElementById("subtotal").innerHTML = json.subtotal;
+        document.getElementById("discounted-total").innerHTML = discounted_price;
+        document.getElementById("discount").innerHTML =discount;
         document.getElementById("total").innerHTML = total;
+      
       },
       error: function (xhr, errmsg, err) {},
     });

@@ -1,0 +1,22 @@
+{%extends '../base.html'%}
+
+{%block content%}
+<div class="new-arrival">
+    <h1>NEW ARRIVALS<br> AROUND THE CORNER</h1>
+    <h2> stay tuned</h2>
+    <div class="arrow bounce">
+    <a class="fa fa-arrow-down" href="#"></a>
+    </div>
+    <section class="button-new-arrival">
+    <div class="searchBox">
+    <input class="searchInput"type="email" name="" placeholder="Email address*" required="">
+    <button class="searchButton" href="#">Notify Me</button>
+    </div>
+    </section>
+    
+</div>
+<script>
+    {% comment %} Make csrf token availble in JS files {% endcomment %}
+    var CSRF_TOKEN = '{{ csrf_token }}';
+</script>
+{%endblock%}

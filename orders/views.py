@@ -7,6 +7,7 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from basket.basket import Basket
 
 from .models import Order, OrderItem
+from account.models import UserBase
 from django.core.mail import send_mail
 
 
@@ -21,6 +22,7 @@ def add(request):
         add1 = request.POST.get('add1')
         add2 = request.POST.get('add2')
         country = request.POST.get('country')
+        state = request.POST.get('state')
         postcode = request.POST.get('postcode')
         baskettotal = basket.get_total_price()
 
@@ -41,27 +43,30 @@ def add(request):
                 'address': add1,
                 'country':country,
                 'pincode':postcode,
+                'state':state,
             })
             send_mail(subject=subject, message=message,from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
 
         response = JsonResponse({'success': 'Return something'})
         return response
 
-# def cancel(request):
-#     basket = Basket(request)
-#     if request.POST.get('action') == 'post':
-#         order_key = request.POST.get('order_key')
-#     if Order.objects.filter(order_key=order_key).exists():
-#         order= Order.objects.filter(order_key=order_key)
-        
-#         subject= 'Order cancellation'
-#         message= render_to_string('payment/order_cancellation.html', {
-#                 'name': request.user.full_name,
-#         })
-#         send_mail(subject=subject, message=message,from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
+def cancel(request):
+    basket = Basket(request)
+    if request.POST.get('action') == 'post':
+        order_key = request.POST.get('order_id')
+        order= Order.objects.get(created=order_key)
+        print(order)
+        order.delete()
+        print(order)
+        email = request.user.email
+        subject= 'Order cancellation'
+        message= render_to_string('payment/order_cancellation.html', {
+                'name': request.user.full_name,
+        })
+        send_mail(subject=subject, message=message,from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
 
-#     response = JsonResponse({'success': 'Order cancelled'})
-#     return response
+    response = JsonResponse({'success': 'Order cancelled'})
+    return response
 
 def payment_confirmation(data):
     Order.objects.filter(order_key=data).update(billing_status=True)

@@ -99,11 +99,21 @@ def subscribe(request):
     user.is_subscribed = True
     user.save()
     email = request.POST.get('email')
+    purpose = request.POST.get('purpose')
     print(email)
+    print(purpose)
     try:
-        send_mail(subject='Subscription confirmation', message='Thanks for subscribing',from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
-        answer = 'Email sent'
+        if purpose =='sale10%':
+            send_mail(subject='Subscription confirmation', message='Thanks for subscribing. \n \n \n You are now elligible for 10 percent off on all of our products. \n \n \n Thank You, \n Modern Classics',from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
+            answer = 'Email sent'
+        
+        if purpose == 'new-arrival':
+            print('yahan tak to aaya')
+            send_mail(subject='Subscription confirmation', message='Thanks for subscribing. \n \n \n we will let you know  about our new products at the earliest.\n \n \n Thank You, \n Modern Classics',from_email='rockykhairnar2099@gmail.com',recipient_list=[email,])
+            answer = 'Email sent'
+    
     except:
+        print(answer)
         answer = 'Please provide email in the correct format'
     response = JsonResponse({'success': answer})
     return response

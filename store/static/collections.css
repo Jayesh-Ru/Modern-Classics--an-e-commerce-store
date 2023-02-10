@@ -12,7 +12,7 @@
 
 /*  */
 .new-arrival{
-width:100vw;
+width:98.7vw;
 height:100vh;
 margin:0;
 overflow:hidden !important;
@@ -26,8 +26,7 @@ align-items:center;
 justify-content:center;
 color:var(--white);
 position:relative;
-    text-align:center;
-overflow: hidden;
+text-align:center;
 }
     
     .new-arrival h1{
@@ -187,4 +186,12 @@ overflow: hidden;
     display:flex;
     width:100%;
     }
+    }
+    @media screen and (max-width: 600px) {
+        .searchBox{
+           display: none;
+        }
+        .arrow.bounce{
+            display: none;
+        }
     }

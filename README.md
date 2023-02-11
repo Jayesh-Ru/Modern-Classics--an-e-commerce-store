@@ -2,8 +2,8 @@
 
 > This is a Django E-commerce fashion website with full functional features that i have built while doing my Full-Stack python course as my capstone project. And i am continously working on improving it and making it better.
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)]
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
 
 ![](https://drive.google.com/file/d/1rz0QYQpciWeOLkieRc_MuN4mjFEbne8t/view)

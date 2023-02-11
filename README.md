@@ -44,7 +44,7 @@ The E-commerce store includes various features, like:
 
 
 ## Tech Stack / Built With
-List down the technology / frameworks / tools / technology you have used in this project.
+List down the technology / frameworks / tools / technology that have been used in this project.
 1. [Python](https://www.python.org/) - Python is a programming language that lets you work quickly and integrate systems more effectively.
 2. [Django](https://www.djangoproject.com/) - The web framework for perfectionists with deadlines.
 3. [Ajax](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX) - AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes.

@@ -6,7 +6,7 @@
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
 
-![](https://drive.google.com/file/d/1rz0QYQpciWeOLkieRc_MuN4mjFEbne8t/view)
+![](/screenshots/ModernClassics_screenshot.png)
 
 
 ## Requirements  (Prerequisites)
@@ -19,9 +19,9 @@ For example:
 
 ## Screenshots
 
-![Screenshots of projects](https://drive.google.com/file/d/1qYL6eU1Xjcw7F1YOQO0iNZ0e-qdQeb5P/view)
+![Screenshots of projects](/screenshots/ModernClassics_screenshot2.png)
 
-![Screenshots of the project](https://drive.google.com/file/d/1Vw2dhq8js-HKg5Lvh72mMyKUaxv0V4ZG/view)
+![Screenshots of the project](/screenshots/ModernClassics_screenshot3.png)
 
 
 ## Features

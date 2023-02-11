@@ -1,7 +1,7 @@
 //'use strict';
 
 var stripe = Stripe(
-  "pk_test_51MYZBdSDcRej9N7gjDlcw7J81m2KOeCOWnUfLhZsy6uuHqXtKShyjOYvTyv3Xuql3GrYeMEb4Jwt0FAXcujgRF3A003bg6L3Dv"
+""
 );
 
 var elem = document.getElementById("submit");
